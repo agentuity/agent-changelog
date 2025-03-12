@@ -5,6 +5,7 @@ import { groq } from "@ai-sdk/groq";
 import { anthropic } from "@ai-sdk/anthropic";
 import { verifyGitHubWebhook } from "../../utils/github";
 import { callDevinAPI } from "../../utils/devin";
+import { generateEventKey } from "../../utils/events";
 
 // Supported repositories
 const SUPPORTED_REPOSITORIES = [
@@ -33,17 +34,6 @@ const WebhookAnalysisSchema = z.object({
 	reasoning: z.string(),
 	isSupported: z.boolean(),
 });
-
-/**
- * Generate a unique key for tracking processed events
- * @param repositoryName The name of the repository
- * @param version The version of the release/tag
- * @param eventType The type of event (release or tag)
- * @returns A unique key for the KV store
- */
-function generateEventKey(repositoryName: string, version: string, eventType: string): string {
-	return `changelog-event:${repositoryName}:${version}:${eventType}`;
-}
 
 export default async function ChangelogAgent(
 	req: AgentRequest,
