@@ -129,14 +129,14 @@ ${JSON.stringify(payload, null, 2)}
 		});
 
 		// Step 3: Call Devin API with the generated prompt
-		// const devinResponse = await callDevinAPI(devinPrompt, ctx);
+		const devinResponse = await callDevinAPI(devinPrompt, ctx);
 
 		return resp.json({
 			status: "success",
 			repository: analysis.repositoryName,
 			eventType: analysis.eventType,
 			version: analysis.version,
-			// devinSessionId: devinResponse.sessionId,
+			devinSessionId: devinResponse.sessionId,
 		});
 	} catch (error: unknown) {
 		const errorMessage = error instanceof Error ? error.message : String(error);
