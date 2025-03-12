@@ -1,0 +1,30 @@
+{
+	"name": "changelog-agent",
+	"description": "Changelog agents to manage product changelog and docs",
+	"version": "0.0.1",
+	"main": "index.js",
+	"type": "module",
+	"scripts": {
+		"build": "agentuity build",
+		"prestart": "agentuity bundle",
+		"start": "bun run .agentuity/index.js"
+	},
+	"keywords": ["agentuity", "agent", "ai", "ai agent", "bun"],
+	"private": true,
+	"devDependencies": {
+		"@types/bun": "latest"
+	},
+	"peerDependencies": {
+		"typescript": "^5"
+	},
+	"dependencies": {
+		"@agentuity/sdk": "^0.0.80",
+		"@ai-sdk/anthropic": "^1.1.15",
+		"@ai-sdk/openai": "^1.2.2",
+		"@octokit/webhooks-methods": "^5.1.1",
+		"@octokit/webhooks-types": "^7.6.1",
+		"ai": "^4.1.54",
+		"zod": "^3.24.2"
+	},
+	"module": "index.ts"
+}

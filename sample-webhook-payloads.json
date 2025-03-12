@@ -1,0 +1,449 @@
+{
+	"samples": [
+		{
+			"name": "Release Event - Supported Repository",
+			"description": "A release event for the sdk-js repository",
+			"payload": {
+				"action": "published",
+				"release": {
+					"url": "https://api.github.com/repos/agentuity/sdk-js/releases/1",
+					"html_url": "https://github.com/agentuity/sdk-js/releases/tag/v1.2.0",
+					"assets_url": "https://api.github.com/repos/agentuity/sdk-js/releases/1/assets",
+					"upload_url": "https://uploads.github.com/repos/agentuity/sdk-js/releases/1/assets{?name,label}",
+					"tarball_url": "https://api.github.com/repos/agentuity/sdk-js/tarball/v1.2.0",
+					"zipball_url": "https://api.github.com/repos/agentuity/sdk-js/zipball/v1.2.0",
+					"id": 1,
+					"node_id": "MDc6UmVsZWFzZTE=",
+					"tag_name": "v1.2.0",
+					"target_commitish": "main",
+					"name": "v1.2.0",
+					"body": "## What's Changed\n* Added new AI model support\n* Improved error handling\n* Fixed bug in authentication\n\n**Full Changelog**: https://github.com/agentuity/sdk-js/compare/v1.1.0...v1.2.0",
+					"draft": false,
+					"prerelease": false,
+					"created_at": "2023-05-10T15:30:00Z",
+					"published_at": "2023-05-10T16:00:00Z"
+				},
+				"repository": {
+					"id": 1296269,
+					"node_id": "MDEwOlJlcG9zaXRvcnkxMjk2MjY5",
+					"name": "sdk-js",
+					"full_name": "agentuity/sdk-js",
+					"private": false,
+					"owner": {
+						"login": "agentuity",
+						"id": 1,
+						"node_id": "MDQ6VXNlcjE=",
+						"avatar_url": "https://github.com/images/error/agentuity_happy.gif",
+						"gravatar_id": "",
+						"url": "https://api.github.com/users/agentuity",
+						"html_url": "https://github.com/agentuity",
+						"type": "Organization",
+						"site_admin": false
+					},
+					"html_url": "https://github.com/agentuity/sdk-js",
+					"description": "Agentuity JavaScript SDK",
+					"fork": false,
+					"url": "https://api.github.com/repos/agentuity/sdk-js",
+					"created_at": "2022-01-01T09:00:00Z",
+					"updated_at": "2023-05-10T16:00:00Z",
+					"pushed_at": "2023-05-10T16:00:00Z",
+					"git_url": "git://github.com/agentuity/sdk-js.git",
+					"ssh_url": "git@github.com:agentuity/sdk-js.git",
+					"clone_url": "https://github.com/agentuity/sdk-js.git",
+					"default_branch": "main"
+				},
+				"sender": {
+					"login": "developer1",
+					"id": 2,
+					"node_id": "MDQ6VXNlcjI=",
+					"avatar_url": "https://github.com/images/error/developer1_happy.gif",
+					"gravatar_id": "",
+					"url": "https://api.github.com/users/developer1",
+					"html_url": "https://github.com/developer1",
+					"type": "User",
+					"site_admin": false
+				}
+			}
+		},
+		{
+			"name": "Tag Event - Supported Repository",
+			"description": "A tag event for the cli repository",
+			"payload": {
+				"ref": "refs/tags/v2.1.0",
+				"before": "0000000000000000000000000000000000000000",
+				"after": "6113728f27ae82c7b1a177c8d03f9e96e0adf246",
+				"repository": {
+					"id": 1296270,
+					"node_id": "MDEwOlJlcG9zaXRvcnkxMjk2Mjcw",
+					"name": "cli",
+					"full_name": "agentuity/cli",
+					"private": false,
+					"owner": {
+						"login": "agentuity",
+						"id": 1,
+						"node_id": "MDQ6VXNlcjE=",
+						"avatar_url": "https://github.com/images/error/agentuity_happy.gif",
+						"gravatar_id": "",
+						"url": "https://api.github.com/users/agentuity",
+						"html_url": "https://github.com/agentuity",
+						"type": "Organization",
+						"site_admin": false
+					},
+					"html_url": "https://github.com/agentuity/cli",
+					"description": "Agentuity Command Line Interface",
+					"fork": false,
+					"url": "https://api.github.com/repos/agentuity/cli",
+					"created_at": "2022-01-01T10:00:00Z",
+					"updated_at": "2023-06-15T12:00:00Z",
+					"pushed_at": "2023-06-15T12:00:00Z",
+					"git_url": "git://github.com/agentuity/cli.git",
+					"ssh_url": "git@github.com:agentuity/cli.git",
+					"clone_url": "https://github.com/agentuity/cli.git",
+					"default_branch": "main"
+				},
+				"pusher": {
+					"name": "developer2",
+					"email": "developer2@example.com"
+				},
+				"sender": {
+					"login": "developer2",
+					"id": 3,
+					"node_id": "MDQ6VXNlcjM=",
+					"avatar_url": "https://github.com/images/error/developer2_happy.gif",
+					"gravatar_id": "",
+					"url": "https://api.github.com/users/developer2",
+					"html_url": "https://github.com/developer2",
+					"type": "User",
+					"site_admin": false
+				},
+				"created": true,
+				"deleted": false,
+				"forced": false,
+				"base_ref": null,
+				"compare": "https://github.com/agentuity/cli/compare/v2.1.0"
+			}
+		},
+		{
+			"name": "Tag Event - Python SDK Repository",
+			"description": "A tag event for the sdk-py repository",
+			"payload": {
+				"ref": "refs/tags/v0.9.0",
+				"before": "0000000000000000000000000000000000000000",
+				"after": "7224839f28ae82c7b1a177c8d03f9e96e0adf247",
+				"repository": {
+					"id": 1296272,
+					"node_id": "MDEwOlJlcG9zaXRvcnkxMjk2Mjcy",
+					"name": "sdk-py",
+					"full_name": "agentuity/sdk-py",
+					"private": false,
+					"owner": {
+						"login": "agentuity",
+						"id": 1,
+						"node_id": "MDQ6VXNlcjE=",
+						"avatar_url": "https://github.com/images/error/agentuity_happy.gif",
+						"gravatar_id": "",
+						"url": "https://api.github.com/users/agentuity",
+						"html_url": "https://github.com/agentuity",
+						"type": "Organization",
+						"site_admin": false
+					},
+					"html_url": "https://github.com/agentuity/sdk-py",
+					"description": "Agentuity Python SDK",
+					"fork": false,
+					"url": "https://api.github.com/repos/agentuity/sdk-py",
+					"created_at": "2022-01-01T12:00:00Z",
+					"updated_at": "2023-08-05T14:00:00Z",
+					"pushed_at": "2023-08-05T14:00:00Z",
+					"git_url": "git://github.com/agentuity/sdk-py.git",
+					"ssh_url": "git@github.com:agentuity/sdk-py.git",
+					"clone_url": "https://github.com/agentuity/sdk-py.git",
+					"default_branch": "main"
+				},
+				"pusher": {
+					"name": "developer4",
+					"email": "developer4@example.com"
+				},
+				"sender": {
+					"login": "developer4",
+					"id": 5,
+					"node_id": "MDQ6VXNlcjU=",
+					"avatar_url": "https://github.com/images/error/developer4_happy.gif",
+					"gravatar_id": "",
+					"url": "https://api.github.com/users/developer4",
+					"html_url": "https://github.com/developer4",
+					"type": "User",
+					"site_admin": false
+				},
+				"created": true,
+				"deleted": false,
+				"forced": false,
+				"base_ref": null,
+				"compare": "https://github.com/agentuity/sdk-py/compare/v0.9.0"
+			}
+		},
+		{
+			"name": "Unsupported Event Type",
+			"description": "A push event (not release or tag) for a supported repository",
+			"payload": {
+				"ref": "refs/heads/main",
+				"before": "6113728f27ae82c7b1a177c8d03f9e96e0adf246",
+				"after": "9887367f27ae82c7b1a177c8d03f9e96e0adf248",
+				"repository": {
+					"id": 1296269,
+					"node_id": "MDEwOlJlcG9zaXRvcnkxMjk2MjY5",
+					"name": "sdk-js",
+					"full_name": "agentuity/sdk-js",
+					"private": false,
+					"owner": {
+						"login": "agentuity",
+						"id": 1,
+						"node_id": "MDQ6VXNlcjE=",
+						"avatar_url": "https://github.com/images/error/agentuity_happy.gif",
+						"gravatar_id": "",
+						"url": "https://api.github.com/users/agentuity",
+						"html_url": "https://github.com/agentuity",
+						"type": "Organization",
+						"site_admin": false
+					},
+					"html_url": "https://github.com/agentuity/sdk-js",
+					"description": "Agentuity JavaScript SDK",
+					"fork": false,
+					"url": "https://api.github.com/repos/agentuity/sdk-js",
+					"created_at": "2022-01-01T09:00:00Z",
+					"updated_at": "2023-09-12T08:00:00Z",
+					"pushed_at": "2023-09-12T08:00:00Z",
+					"git_url": "git://github.com/agentuity/sdk-js.git",
+					"ssh_url": "git@github.com:agentuity/sdk-js.git",
+					"clone_url": "https://github.com/agentuity/sdk-js.git",
+					"default_branch": "main"
+				},
+				"pusher": {
+					"name": "developer1",
+					"email": "developer1@example.com"
+				},
+				"sender": {
+					"login": "developer1",
+					"id": 2,
+					"node_id": "MDQ6VXNlcjI=",
+					"avatar_url": "https://github.com/images/error/developer1_happy.gif",
+					"gravatar_id": "",
+					"url": "https://api.github.com/users/developer1",
+					"html_url": "https://github.com/developer1",
+					"type": "User",
+					"site_admin": false
+				},
+				"created": false,
+				"deleted": false,
+				"forced": false,
+				"commits": [
+					{
+						"id": "9887367f27ae82c7b1a177c8d03f9e96e0adf248",
+						"message": "Fix typo in README",
+						"timestamp": "2023-09-12T08:00:00Z",
+						"url": "https://github.com/agentuity/sdk-js/commit/9887367f27ae82c7b1a177c8d03f9e96e0adf248",
+						"author": {
+							"name": "Developer One",
+							"email": "developer1@example.com"
+						},
+						"committer": {
+							"name": "Developer One",
+							"email": "developer1@example.com"
+						},
+						"added": [],
+						"removed": [],
+						"modified": ["README.md"]
+					}
+				]
+			}
+		},
+		{
+			"name": "Unsupported Repository",
+			"description": "A release event for an unsupported repository",
+			"payload": {
+				"action": "published",
+				"release": {
+					"url": "https://api.github.com/repos/agentuity/unsupported-repo/releases/1",
+					"html_url": "https://github.com/agentuity/unsupported-repo/releases/tag/v1.0.0",
+					"assets_url": "https://api.github.com/repos/agentuity/unsupported-repo/releases/1/assets",
+					"upload_url": "https://uploads.github.com/repos/agentuity/unsupported-repo/releases/1/assets{?name,label}",
+					"tarball_url": "https://api.github.com/repos/agentuity/unsupported-repo/tarball/v1.0.0",
+					"zipball_url": "https://api.github.com/repos/agentuity/unsupported-repo/zipball/v1.0.0",
+					"id": 5,
+					"node_id": "MDc6UmVsZWFzZTU=",
+					"tag_name": "v1.0.0",
+					"target_commitish": "main",
+					"name": "v1.0.0",
+					"body": "Initial release",
+					"draft": false,
+					"prerelease": false,
+					"created_at": "2023-10-01T09:00:00Z",
+					"published_at": "2023-10-01T09:30:00Z"
+				},
+				"repository": {
+					"id": 1296273,
+					"node_id": "MDEwOlJlcG9zaXRvcnkxMjk2Mjcz",
+					"name": "unsupported-repo",
+					"full_name": "agentuity/unsupported-repo",
+					"private": false,
+					"owner": {
+						"login": "agentuity",
+						"id": 1,
+						"node_id": "MDQ6VXNlcjE=",
+						"avatar_url": "https://github.com/images/error/agentuity_happy.gif",
+						"gravatar_id": "",
+						"url": "https://api.github.com/users/agentuity",
+						"html_url": "https://github.com/agentuity",
+						"type": "Organization",
+						"site_admin": false
+					},
+					"html_url": "https://github.com/agentuity/unsupported-repo",
+					"description": "Unsupported Repository",
+					"fork": false,
+					"url": "https://api.github.com/repos/agentuity/unsupported-repo",
+					"created_at": "2023-01-01T09:00:00Z",
+					"updated_at": "2023-10-01T09:30:00Z",
+					"pushed_at": "2023-10-01T09:30:00Z",
+					"git_url": "git://github.com/agentuity/unsupported-repo.git",
+					"ssh_url": "git@github.com:agentuity/unsupported-repo.git",
+					"clone_url": "https://github.com/agentuity/unsupported-repo.git",
+					"default_branch": "main"
+				},
+				"sender": {
+					"login": "developer5",
+					"id": 6,
+					"node_id": "MDQ6VXNlcjY=",
+					"avatar_url": "https://github.com/images/error/developer5_happy.gif",
+					"gravatar_id": "",
+					"url": "https://api.github.com/users/developer5",
+					"html_url": "https://github.com/developer5",
+					"type": "User",
+					"site_admin": false
+				}
+			}
+		},
+		{
+			"name": "Create Event - Tag Creation",
+			"description": "A create event triggered when a tag is created in the sdk-go repository",
+			"payload": {
+				"ref": "v1.0.0",
+				"ref_type": "tag",
+				"master_branch": "main",
+				"description": "Agentuity Go SDK",
+				"pusher_type": "user",
+				"repository": {
+					"id": 1296274,
+					"node_id": "MDEwOlJlcG9zaXRvcnkxMjk2Mjc0",
+					"name": "sdk-go",
+					"full_name": "agentuity/sdk-go",
+					"private": false,
+					"owner": {
+						"login": "agentuity",
+						"id": 1,
+						"node_id": "MDQ6VXNlcjE=",
+						"avatar_url": "https://github.com/images/error/agentuity_happy.gif",
+						"gravatar_id": "",
+						"url": "https://api.github.com/users/agentuity",
+						"html_url": "https://github.com/agentuity",
+						"type": "Organization",
+						"site_admin": false
+					},
+					"html_url": "https://github.com/agentuity/sdk-go",
+					"description": "Agentuity Go SDK",
+					"fork": false,
+					"url": "https://api.github.com/repos/agentuity/sdk-go",
+					"created_at": "2023-01-15T10:00:00Z",
+					"updated_at": "2023-11-20T14:30:00Z",
+					"pushed_at": "2023-11-20T14:30:00Z",
+					"git_url": "git://github.com/agentuity/sdk-go.git",
+					"ssh_url": "git@github.com:agentuity/sdk-go.git",
+					"clone_url": "https://github.com/agentuity/sdk-go.git",
+					"default_branch": "main"
+				},
+				"organization": {
+					"login": "agentuity",
+					"id": 1,
+					"node_id": "MDQ6VXNlcjE=",
+					"avatar_url": "https://github.com/images/error/agentuity_happy.gif",
+					"gravatar_id": "",
+					"url": "https://api.github.com/users/agentuity",
+					"html_url": "https://github.com/agentuity",
+					"type": "Organization",
+					"site_admin": false
+				},
+				"sender": {
+					"login": "developer6",
+					"id": 7,
+					"node_id": "MDQ6VXNlcjc=",
+					"avatar_url": "https://github.com/images/error/developer6_happy.gif",
+					"gravatar_id": "",
+					"url": "https://api.github.com/users/developer6",
+					"html_url": "https://github.com/developer6",
+					"type": "User",
+					"site_admin": false
+				}
+			}
+		},
+		{
+			"name": "Create Event - Branch Creation",
+			"description": "A create event triggered when a branch is created in the sdk-js repository",
+			"payload": {
+				"ref": "feature/new-auth-flow",
+				"ref_type": "branch",
+				"master_branch": "main",
+				"description": "Agentuity JavaScript SDK",
+				"pusher_type": "user",
+				"repository": {
+					"id": 1296269,
+					"node_id": "MDEwOlJlcG9zaXRvcnkxMjk2MjY5",
+					"name": "sdk-js",
+					"full_name": "agentuity/sdk-js",
+					"private": false,
+					"owner": {
+						"login": "agentuity",
+						"id": 1,
+						"node_id": "MDQ6VXNlcjE=",
+						"avatar_url": "https://github.com/images/error/agentuity_happy.gif",
+						"gravatar_id": "",
+						"url": "https://api.github.com/users/agentuity",
+						"html_url": "https://github.com/agentuity",
+						"type": "Organization",
+						"site_admin": false
+					},
+					"html_url": "https://github.com/agentuity/sdk-js",
+					"description": "Agentuity JavaScript SDK",
+					"fork": false,
+					"url": "https://api.github.com/repos/agentuity/sdk-js",
+					"created_at": "2022-01-01T09:00:00Z",
+					"updated_at": "2023-12-05T10:15:00Z",
+					"pushed_at": "2023-12-05T10:15:00Z",
+					"git_url": "git://github.com/agentuity/sdk-js.git",
+					"ssh_url": "git@github.com:agentuity/sdk-js.git",
+					"clone_url": "https://github.com/agentuity/sdk-js.git",
+					"default_branch": "main"
+				},
+				"organization": {
+					"login": "agentuity",
+					"id": 1,
+					"node_id": "MDQ6VXNlcjE=",
+					"avatar_url": "https://github.com/images/error/agentuity_happy.gif",
+					"gravatar_id": "",
+					"url": "https://api.github.com/users/agentuity",
+					"html_url": "https://github.com/agentuity",
+					"type": "Organization",
+					"site_admin": false
+				},
+				"sender": {
+					"login": "developer1",
+					"id": 2,
+					"node_id": "MDQ6VXNlcjI=",
+					"avatar_url": "https://github.com/images/error/developer1_happy.gif",
+					"gravatar_id": "",
+					"url": "https://api.github.com/users/developer1",
+					"html_url": "https://github.com/developer1",
+					"type": "User",
+					"site_admin": false
+				}
+			}
+		}
+	]
+}
