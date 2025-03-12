@@ -34,6 +34,17 @@ const WebhookAnalysisSchema = z.object({
 	isSupported: z.boolean(),
 });
 
+/**
+ * Generate a unique key for tracking processed events
+ * @param repositoryName The name of the repository
+ * @param version The version of the release/tag
+ * @param eventType The type of event (release or tag)
+ * @returns A unique key for the KV store
+ */
+function generateEventKey(repositoryName: string, version: string, eventType: string): string {
+	return `changelog-event:${repositoryName}:${version}:${eventType}`;
+}
+
 export default async function ChangelogAgent(
 	req: AgentRequest,
 	resp: AgentResponse,
@@ -78,6 +89,8 @@ Consider:
 2. Event types: release or tag
 3. If this is a release, the version should be in release.tag_name
 4. If this is a tag, the version should be the last part of the ref (format: refs/tags/v1.0.0)
+5. For release events, check if action is "published" - only process published releases
+6. For tag events, check if created is true - only process newly created tags
 
 Provide your analysis based on the schema requirements.
 `,
@@ -91,6 +104,46 @@ Provide your analysis based on the schema requirements.
 				status: "ignored",
 				reason: analysis.reasoning,
 			});
+		}
+
+		// Check if we've already processed this event
+		const eventKey = generateEventKey(
+			analysis.repositoryName,
+			analysis.version,
+			analysis.eventType
+		);
+		
+		// Try to get the event from KV store
+		const existingEvent = await ctx.kv.get("processed-events", eventKey);
+		
+		if (existingEvent) {
+			ctx.logger.info("Event already processed:", {
+				eventKey,
+				existingEvent,
+			});
+			
+			return resp.json({
+				status: "already_processed",
+				repository: analysis.repositoryName,
+				eventType: analysis.eventType,
+				version: analysis.version,
+				message: "This event has already been processed",
+			});
+		}
+
+		// For release events, check if the action is "published"
+		if (analysis.eventType === "release") {
+			const releasePayload = payload as { action?: string };
+			if (releasePayload.action !== "published") {
+				ctx.logger.info("Ignoring non-published release event:", {
+					action: releasePayload.action,
+				});
+				
+				return resp.json({
+					status: "ignored",
+					reason: "Only published releases are processed",
+				});
+			}
 		}
 
 		// Use Anthropic for the more complex task of generating Devin prompt
@@ -130,6 +183,15 @@ ${JSON.stringify(payload, null, 2)}
 
 		// Step 3: Call Devin API with the generated prompt
 		const devinResponse = await callDevinAPI(devinPrompt, ctx);
+
+		// Store the event in KV store to prevent duplicate processing
+		await ctx.kv.set("processed-events", eventKey, {
+			repository: analysis.repositoryName,
+			version: analysis.version,
+			eventType: analysis.eventType,
+			processedAt: new Date().toISOString(),
+			devinSessionId: devinResponse.sessionId,
+		});
 
 		return resp.json({
 			status: "success",
