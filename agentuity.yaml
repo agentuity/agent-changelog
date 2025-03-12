@@ -6,7 +6,7 @@
 # The version semver range required to run this project
 version: '>=0.0.53'
 # The ID of the project which is automatically generated
-project_id: proj_jPXOl9cjfCGqJk67d0dbc1RCH5L051je
+project_id: proj_och67d1bddcAgehmqldoMQzPGkvWDeH3
 # The name of the project which is editable
 name: Changelog
 # The description of the project which is editable
@@ -66,7 +66,7 @@ bundler:
 # The agents that are part of this project
 agents:
   - # The ID of the Agent which is automatically generated
-    id: agent_67d0dbc1W6COfx7Q3Z9MIHN3rNzN2mw0
+    id: agent_hvMTQ567d1bddcvPXI9QXFcLrhsNseu6
     # The name of the Agent which is editable
     name: controller
     # The description of the Agent which is editable

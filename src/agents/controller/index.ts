@@ -1,6 +1,7 @@
 import type { AgentRequest, AgentResponse, AgentContext } from "@agentuity/sdk";
 import { generateObject, generateText } from "ai";
 import { z } from "zod";
+import { groq } from "@ai-sdk/groq";
 import { anthropic } from "@ai-sdk/anthropic";
 import { verifyGitHubWebhook } from "../../utils/github";
 import { callDevinAPI } from "../../utils/devin";
@@ -33,11 +34,6 @@ const WebhookAnalysisSchema = z.object({
 	isSupported: z.boolean(),
 });
 
-interface DevinApiResponse {
-	sessionId: string;
-	[key: string]: unknown;
-}
-
 export default async function ChangelogAgent(
 	req: AgentRequest,
 	resp: AgentResponse,
@@ -63,13 +59,13 @@ export default async function ChangelogAgent(
 			}
 		}
 
-		// Use LLM to analyze the webhook payload and determine action
-		const model = anthropic("claude-3-7-sonnet-20250219");
-		const payload = req.data;
+		// Use Groq for the webhook payload analysis
+		const groqModel = groq("llama3-70b-8192");
+		const payload = req.data.json;
 
-		// Step 1: Let the LLM analyze the webhook payload
+		// Step 1: Let the LLM analyze the webhook payload using Groq (faster and cheaper)
 		const { object: analysis } = await generateObject({
-			model,
+			model: groqModel,
 			schema: WebhookAnalysisSchema,
 			prompt: `
 You are a GitHub webhook analyst for a changelog automation system.
@@ -97,9 +93,12 @@ Provide your analysis based on the schema requirements.
 			});
 		}
 
+		// Use Anthropic for the more complex task of generating Devin prompt
+		const anthropicModel = anthropic("claude-3-7-sonnet-20250219");
+
 		// Step 2: Generate a comprehensive prompt for Devin
 		const { text: devinPrompt } = await generateText({
-			model,
+			model: anthropicModel,
 			prompt: `
 Generate a detailed prompt for Devin AI to update a changelog. 
 Devin will use this prompt to update the changelog for a given repository, update the docs changelog too, etc.
@@ -113,6 +112,7 @@ Consider:
 - Changelogs should follow Keep a Changelog format (https://keepachangelog.com/)
 - Include repository-specific considerations
 - Changelogs in the repo can be found in the CHANGELOG.md file
+- Create a PR and ping the team on Slack when it is created
 
 MUST INCLUDE THIS VERBIAGE: The documentation changelog page for the respective topic needs 
 to be updated in the docs repository: https://github.com/agentuity/docs.
@@ -129,14 +129,14 @@ ${JSON.stringify(payload, null, 2)}
 		});
 
 		// Step 3: Call Devin API with the generated prompt
-		const devinResponse = await callDevinAPI(devinPrompt, ctx);
+		// const devinResponse = await callDevinAPI(devinPrompt, ctx);
 
 		return resp.json({
 			status: "success",
 			repository: analysis.repositoryName,
 			eventType: analysis.eventType,
 			version: analysis.version,
-			devinSessionId: devinResponse.sessionId,
+			// devinSessionId: devinResponse.sessionId,
 		});
 	} catch (error: unknown) {
 		const errorMessage = error instanceof Error ? error.message : String(error);

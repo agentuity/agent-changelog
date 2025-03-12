@@ -20,6 +20,7 @@
 	"dependencies": {
 		"@agentuity/sdk": "^0.0.80",
 		"@ai-sdk/anthropic": "^1.1.15",
+		"@ai-sdk/groq": "^1.1.13",
 		"@ai-sdk/openai": "^1.2.2",
 		"@octokit/webhooks-methods": "^5.1.1",
 		"@octokit/webhooks-types": "^7.6.1",

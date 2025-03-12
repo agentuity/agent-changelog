@@ -34,7 +34,7 @@ export async function verifyGitHubWebhook(
 	// Verify the signature
 	try {
 		// Get the webhook payload as a string
-		const payload = req.data;
+		const payload = req.data.json;
 		const payloadString =
 			typeof payload === "string" ? payload : JSON.stringify(payload);
 
