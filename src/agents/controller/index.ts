@@ -100,18 +100,26 @@ Provide your analysis based on the schema requirements.
 		const eventKey = generateEventKey(
 			analysis.repositoryName,
 			analysis.version,
-			analysis.eventType
+			analysis.eventType,
 		);
-		
+
 		// Try to get the event from KV store
-		const existingEvent = await ctx.kv.get("processed-events", eventKey);
-		
+		const kvEventStore = await ctx.kv.get(
+			"agent-changelog-processed-events",
+			eventKey,
+		);
+		const existingEvent = kvEventStore.data?.json;
+		ctx.logger.info("Existing event:", {
+			eventKey,
+			existingEvent,
+		});
+
 		if (existingEvent) {
 			ctx.logger.info("Event already processed:", {
 				eventKey,
 				existingEvent,
 			});
-			
+
 			return resp.json({
 				status: "already_processed",
 				repository: analysis.repositoryName,
@@ -123,12 +131,14 @@ Provide your analysis based on the schema requirements.
 
 		// For release events, check if the action is "published"
 		if (analysis.eventType === "release") {
-			const releasePayload = payload as { action?: string };
-			if (releasePayload.action !== "published") {
+			// GitHub webhook payloads have action at the top level for release events
+			const payloadObj = payload as { payload?: { action?: string } };
+			const action = payloadObj?.payload?.action as string | undefined;
+			if (action !== "published") {
 				ctx.logger.info("Ignoring non-published release event:", {
-					action: releasePayload.action,
+					action,
 				});
-				
+
 				return resp.json({
 					status: "ignored",
 					reason: "Only published releases are processed",
@@ -175,7 +185,7 @@ ${JSON.stringify(payload, null, 2)}
 		const devinResponse = await callDevinAPI(devinPrompt, ctx);
 
 		// Store the event in KV store to prevent duplicate processing
-		await ctx.kv.set("processed-events", eventKey, {
+		await ctx.kv.set("agent-changelog-processed-events", eventKey, {
 			repository: analysis.repositoryName,
 			version: analysis.version,
 			eventType: analysis.eventType,
