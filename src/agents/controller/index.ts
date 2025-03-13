@@ -172,6 +172,12 @@ to be updated in the docs repository: https://github.com/agentuity/docs.
 Don't create a new page, we already have them (sdk-js, sdk-py, etc). Make sure you format 
 following the previous release examples
 
+IMPORTANT:
+There are is an existing changelog file so use this. Do not create a new file.
+Do NOT remove old release notes.  Add new release notes to the top of the file  after 
+the heading and any ancillary text.  A good way to reference is look at the last release / changelog notes
+in the file and put it just before that one.
+
 Original payload information:
 ${JSON.stringify(payload, null, 2)}
 `,
