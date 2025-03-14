@@ -173,7 +173,8 @@ Don't create a new page, we already have them (sdk-js, sdk-py, etc). Make sure y
 following the previous release examples
 
 IMPORTANT:
-There are is an existing changelog file so use this. Do not create a new file.
+There are is an existing changelog file so use that. Do not create a new file anywhere. No new links 
+in the doc repo, no new .md file, etc.  Just use the existing changelog file at the target.
 Do NOT remove old release notes.  Add new release notes to the top of the file  after 
 the heading and any ancillary text.  A good way to reference is look at the last release / changelog notes
 in the file and put it just before that one.
