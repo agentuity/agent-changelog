@@ -172,6 +172,9 @@ to be updated in the docs repository: https://github.com/agentuity/docs.
 Don't create a new page, we already have them (sdk-js, sdk-py, etc). Make sure you format 
 following the previous release examples
 
+For the docs repo, be aware that the table of contents are auto-generated from the markdown headings.
+So don't add "changes" as a heading, make it a bolded line item instead. The version should be the heading.
+
 IMPORTANT:
 There are is an existing changelog file so use that. Do not create a new file anywhere. No new links 
 in the doc repo, no new .md file, etc.  Just use the existing changelog file at the target.
