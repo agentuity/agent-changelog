@@ -1,4 +1,18 @@
+<div align="center">
+    <img src=".github/Agentuity.png" alt="Agentuity" width="100"/> <br/>
+    <strong>Changelog Management Agent</strong> <br/>
+    <strong>Build Agents, Not Infrastructure</strong> <br/>
+<br />
+<a href="https://github.com/agentuity/agent-changelog"><img alt="GitHub Repo" src="https://img.shields.io/badge/GitHub-Changelog-blue"></a>
+<a href="https://github.com/agentuity/agent-changelog/blob/main/LICENSE.md"><img alt="License" src="https://badgen.now.sh/badge/license/Apache-2.0"></a>
+<a href="https://discord.gg/vtn3hgUfuc"><img alt="Join the community on Discord" src="https://img.shields.io/discord/1332974865371758646.svg?style=flat"></a>
+</div>
+</div>
+
 # Changelog Management Agent
+
+> [!WARNING]  
+> This repository is under heavy development and it is not yet stable or ready for use.
 
 This agent receives GitHub webhooks when releases or tags are created and automatically updates changelogs across repositories using Devin AI and LLM processing.
 
@@ -38,6 +52,10 @@ This agent leverages AI in multiple ways:
 3. **Structured Output**: Uses Zod schemas to ensure reliable data extraction
 4. **Changelog Generation**: Delegates the actual creation to Devin AI
 
+## Documentation
+
+For comprehensive documentation on Agentuity, visit our documentation site at [agentuity.dev](https://agentuity.dev).
+
 ## Development
 
 This agent is built using the Agentuity SDK.
@@ -47,7 +65,7 @@ This agent is built using the Agentuity SDK.
 bun install
 
 # Run the agent locally
-AGENTUITY_ENV=development agentuity dev
+agentuity dev
 ```
 
 ## Deployment
