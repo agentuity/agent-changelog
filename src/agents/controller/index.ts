@@ -175,12 +175,17 @@ following the previous release examples
 For the docs repo, be aware that the table of contents are auto-generated from the markdown headings.
 So don't add "changes" as a heading, make it a bolded line item instead. The version should be the heading.
 
-IMPORTANT:
-There are is an existing changelog file so use that. Do not create a new file anywhere. No new links 
-in the doc repo, no new .md file, etc.  Just use the existing changelog file at the target.
-Do NOT remove old release notes.  Add new release notes to the top of the file  after 
-the heading and any ancillary text.  A good way to reference is look at the last release / changelog notes
+<IMPORTANT>
+There are is an existing changelog file so use that. 
+DO NOT create a new file anywhere. 
+No new links in the doc repo, no new .md file, etc.  
+Just use the existing changelog file at the target.
+Do NOT remove old release notes.  
+Add new release notes to the top of the file  after the heading and any ancillary text.  
+A good way to reference is look at the last several release / changelog notes
 in the file and put it just before that one.
+Make sure you match the style and format of the existing notes.
+</IMPORTANT>
 
 Original payload information:
 ${JSON.stringify(payload, null, 2)}
