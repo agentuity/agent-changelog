@@ -11,9 +11,6 @@
 
 # Changelog Management Agent
 
-> [!WARNING]  
-> This repository is under heavy development and it is not yet stable or ready for use.
-
 This agent receives GitHub webhooks when releases or tags are created and automatically updates changelogs across repositories using Devin AI and LLM processing.
 
 ## Overview
