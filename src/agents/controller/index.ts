@@ -61,7 +61,7 @@ export default async function ChangelogAgent(
 		}
 
 		// Use Groq for the webhook payload analysis
-		const groqModel = groq("llama3-70b-8192");
+		const groqModel = groq("meta-llama/llama-4-scout-17b-16e-instruct");
 		const payload = req.data.json;
 
 		// Step 1: Let the LLM analyze the webhook payload using Groq (faster and cheaper)
