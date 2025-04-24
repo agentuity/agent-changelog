@@ -81,6 +81,7 @@ Consider:
 4. If this is a tag, the version should be the last part of the ref (format: refs/tags/v1.0.0)
 5. For release events, check if action is "published" - only process published releases
 6. For tag events, check if created is true - only process newly created tags
+7. If the release or tag contains "-next" in the version, it should be ignored
 
 Provide your analysis based on the schema requirements.
 `,
@@ -93,20 +94,6 @@ Provide your analysis based on the schema requirements.
 			return resp.json({
 				status: "ignored",
 				reason: analysis.reasoning,
-			});
-		}
-
-		if (analysis.version.includes("-next")) {
-			ctx.logger.info("Ignoring prerelease with -next in version:", {
-				repository: analysis.repositoryName,
-				version: analysis.version,
-			});
-
-			return resp.json({
-				status: "ignored",
-				reason: "Prereleases with -next in version don't need a changelog",
-				repository: analysis.repositoryName,
-				version: analysis.version,
 			});
 		}
 
