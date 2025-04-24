@@ -96,6 +96,20 @@ Provide your analysis based on the schema requirements.
 			});
 		}
 
+		if (analysis.version.includes("-next")) {
+			ctx.logger.info("Ignoring prerelease with -next in version:", {
+				repository: analysis.repositoryName,
+				version: analysis.version,
+			});
+
+			return resp.json({
+				status: "ignored",
+				reason: "Prereleases with -next in version don't need a changelog",
+				repository: analysis.repositoryName,
+				version: analysis.version,
+			});
+		}
+
 		// Check if we've already processed this event
 		const eventKey = generateEventKey(
 			analysis.repositoryName,
