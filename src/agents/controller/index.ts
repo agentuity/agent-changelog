@@ -81,6 +81,7 @@ Consider:
 4. If this is a tag, the version should be the last part of the ref (format: refs/tags/v1.0.0)
 5. For release events, check if action is "published" - only process published releases
 6. For tag events, check if created is true - only process newly created tags
+7. If the release or tag contains "-next" in the version, it should be ignored
 
 Provide your analysis based on the schema requirements.
 `,
