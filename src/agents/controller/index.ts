@@ -138,7 +138,7 @@ Provide your analysis based on the schema requirements.
 		// For release events, check if the action is "published"
 		if (analysis.eventType === "release") {
 			// GitHub webhook payloads have action at the top level for release events
-			const action = payload?.action as string | undefined;
+			const action = payload?.action;
 			if (action !== "published") {
 				ctx.logger.info("Ignoring non-published release event:", {
 					action,
