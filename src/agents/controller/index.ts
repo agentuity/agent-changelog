@@ -42,10 +42,12 @@ export default async function ChangelogAgent(
 ) {
 	try {
 		ctx.logger.info("Received webhook request", {
-			env: process.env.AGENTUITY_ENV,
+			env: process.env.AGENTUITY_ENVIRONMENT,
+			metadata: req.metadata,
+			data: await req.data.text(),
 		});
 
-		if (process.env.AGENTUITY_ENV === "development") {
+		if (process.env.AGENTUITY_ENVIRONMENT === "development") {
 			ctx.logger.info(
 				"Running in local development mode - skipping webhook signature verification",
 			);
@@ -62,7 +64,9 @@ export default async function ChangelogAgent(
 
 		// Use Groq for the webhook payload analysis
 		const groqModel = groq("meta-llama/llama-4-scout-17b-16e-instruct");
-		const payload = req.data.json;
+		const { payload } = await req.data.object<{
+			payload?: { action?: string };
+		}>();
 
 		// Step 1: Let the LLM analyze the webhook payload using Groq (faster and cheaper)
 		const { object: analysis } = await generateObject({
@@ -72,7 +76,8 @@ export default async function ChangelogAgent(
 You are a GitHub webhook analyst for a changelog automation system.
 
 Analyze this GitHub webhook payload and extract the following information:
-${JSON.stringify(payload, null, 2)}
+
+${await req.data.text()}
 
 Consider:
 1. Supported repositories: ${SUPPORTED_REPOSITORIES.map((r) => `${r.name} - ${r.type} - ${r.url}`).join(", ")}
@@ -109,7 +114,7 @@ Provide your analysis based on the schema requirements.
 			"agent-changelog-processed-events",
 			eventKey,
 		);
-		const existingEvent = kvEventStore.data?.json;
+		const existingEvent = kvEventStore.exists;
 		ctx.logger.info("Existing event:", {
 			eventKey,
 			existingEvent,
@@ -133,8 +138,7 @@ Provide your analysis based on the schema requirements.
 		// For release events, check if the action is "published"
 		if (analysis.eventType === "release") {
 			// GitHub webhook payloads have action at the top level for release events
-			const payloadObj = payload as { payload?: { action?: string } };
-			const action = payloadObj?.payload?.action as string | undefined;
+			const action = payload?.action as string | undefined;
 			if (action !== "published") {
 				ctx.logger.info("Ignoring non-published release event:", {
 					action,
@@ -189,7 +193,7 @@ Make sure you match the style and format of the existing notes.
 </IMPORTANT>
 
 Original payload information:
-${JSON.stringify(payload, null, 2)}
+${await req.data.text()}
 `,
 		});
 
