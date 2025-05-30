@@ -12,9 +12,7 @@ export async function verifyGitHubWebhook(
 	ctx: AgentContext,
 ): Promise<{ success: boolean; message?: string }> {
 	const headers = req.get("headers") as Record<string, string>;
-	ctx.logger.info("headers", { headers });
 	const signature = headers?.["x-hub-signature-256"] as string;
-	ctx.logger.info("signature", { signature });
 	const webhookSecret = process.env.GITHUB_WEBHOOK_SECRET;
 
 	if (!signature) {
@@ -37,7 +35,6 @@ export async function verifyGitHubWebhook(
 	try {
 		// Get the webhook payload as a string
 		const payload = await req.data.text();
-		ctx.logger.info({ signature, webhookSecret: !!webhookSecret });
 		const isValid = await verify(webhookSecret, payload, signature);
 
 		if (!isValid) {

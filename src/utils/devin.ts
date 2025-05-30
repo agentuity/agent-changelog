@@ -34,6 +34,7 @@ export async function callDevinAPI(prompt: string, ctx: AgentContext) {
 
 		ctx.logger.info("Devin API response:", {
 			statusCode: response.status,
+			data,
 			sessionId: data.sessionId || "unknown",
 		});
 
