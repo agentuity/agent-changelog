@@ -9,6 +9,8 @@
 </div>
 </div>
 
+[![Deploy with Agentuity](https://app.agentuity.com/img/deploy.svg)](https://app.agentuity.com/deploy)
+
 # Changelog Management Agent
 
 This agent receives GitHub webhooks when releases or tags are created and automatically updates changelogs across repositories using Devin AI and LLM processing.
